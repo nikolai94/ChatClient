@@ -1,1 +1,1 @@
-java -cp Echo.jar gui.Gui 9090 localhost
+java -cp Echo.jar Presentation.Gui 9090 localhost
