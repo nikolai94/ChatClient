@@ -1,0 +1,14 @@
+feb 17, 2015 10:55:35 AM echoserver.EchoServer runServer
+INFO: Sever started. Listening on: 9090, bound to: localhost
+feb 17, 2015 10:55:48 AM echoserver.EchoServer runServer
+INFO: Connected to a client
+feb 17, 2015 10:55:56 AM echoserver.EchoServer runServer
+INFO: Connected to a client
+feb 17, 2015 10:55:59 AM echoserver.handleClient run
+INFO: Received the message: HE 
+feb 17, 2015 10:55:59 AM echoserver.handleClient run
+INFO: Received the message: HE 
+feb 17, 2015 10:56:03 AM echoserver.handleClient run
+INFO: Received the message: HE 
+feb 17, 2015 10:56:03 AM echoserver.handleClient run
+INFO: Received the message: HE 

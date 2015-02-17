@@ -8,8 +8,10 @@ package Presentation;
 import echoclient.*;
 import echoclient.EchoListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -21,6 +23,8 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
      * Creates new form Gui
      */
     EchoClient echoclient;
+    DefaultListModel beskeder = new DefaultListModel();
+    ArrayList<String> msg  = new ArrayList<String>();
     public Gui() {
         try {
             initComponents();
@@ -98,18 +102,18 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
         });
         jScrollPane1.setViewportView(jList1);
 
-        jList2.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(jList2);
 
         jLabel4.setText("Send to:");
 
         jLabel5.setText("Send text");
 
-        jButtonAdd.setText("Add");
+        jButtonAdd.setText("Send");
+        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddActionPerformed(evt);
+            }
+        });
 
         jButtonClear.setText("Clear");
 
@@ -152,7 +156,7 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
                             .addComponent(jLabel5)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                             .addComponent(jTextFieldSendText))))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(131, 131, 131)
@@ -207,7 +211,7 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldPortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPortActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_jTextFieldPortActionPerformed
 
     private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserActionPerformed
@@ -217,6 +221,10 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
     private void jTextFieldIP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIP2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldIP2ActionPerformed
+
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+          echoclient.send(jTextFieldSendText.getText());
+    }//GEN-LAST:event_jButtonAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,5 +284,9 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
 
     @Override
     public void messageArrived(String data) {
+        System.out.println("besked modtaget");
+        msg.add(data);
+        beskeder.addElement(data);
+        jList2.setModel(beskeder);
     }
 }
