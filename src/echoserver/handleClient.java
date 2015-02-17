@@ -29,6 +29,11 @@ public class handleClient extends Thread{
     writer = new PrintWriter(socket.getOutputStream(), true);
     this.socket = socket;
   }
+    
+    public void send(String msg)
+    {
+        writer.write(msg);
+    }
     @Override
     public void run(){
     

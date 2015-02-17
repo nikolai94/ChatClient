@@ -29,10 +29,12 @@ public class EchoServer {
   {
       clients.remove(hc);
   }
-
-  
-  
-  
+  public void send(String msg)
+  {
+      for (int i = 0; i < clients.size(); i++) {
+          clients.get(i).send(msg);
+      }
+  }
   private void runServer()
   {
     int port = Integer.parseInt(properties.getProperty("port"));
