@@ -1,5 +1,4 @@
 package utils;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,9 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-/**
- * @author Lars Mortensen
- */
+
 public class Utils {
 
   public static Properties initProperties(String propertyFile) {
@@ -38,11 +35,7 @@ public class Utils {
     }
   }
 
-  /**
-   * Call this to delete the ".lck" file
-   *
-   * @param logger
-   */
+
   public static void closeLogger(String logger) {
     for (Handler h : Logger.getLogger(logger).getHandlers()) {
       System.out.println("Closing logger");
