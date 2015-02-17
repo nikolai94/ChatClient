@@ -31,6 +31,7 @@ public class EchoServer {
   }
   public void send(String msg)
   {
+      System.out.println("In EchoServer.send()");
       for (int i = 0; i < clients.size(); i++) {
           clients.get(i).send(msg);
       }
@@ -48,9 +49,9 @@ public class EchoServer {
       do {
         Socket socket = serverSocket.accept(); //Important Blocking call
         Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "Connected to a client");        
-        new handleClient(socket).start();
-        handleClient hc = new handleClient(socket);
+        handleClient hc = new handleClient(socket, this);
         clients.add(hc);
+        hc.start();
       } while (keepRunning);
     } 
     catch (IOException ex) {    

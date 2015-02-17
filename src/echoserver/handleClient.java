@@ -22,9 +22,10 @@ public class handleClient extends Thread{
     Scanner input;
     PrintWriter writer;
     Socket socket;
-    EchoServer echoS = new EchoServer();
+    EchoServer echoS;
     
-    public handleClient(Socket socket) throws IOException {
+    public handleClient(Socket socket, EchoServer echoServer) throws IOException {
+    echoS = echoServer;
     input = new Scanner(socket.getInputStream());
     writer = new PrintWriter(socket.getOutputStream(), true);
     this.socket = socket;
@@ -32,7 +33,7 @@ public class handleClient extends Thread{
     
     public void send(String msg)
     {
-        writer.write(msg);
+        writer.println(msg);
     }
     @Override
     public void run(){
@@ -40,7 +41,7 @@ public class handleClient extends Thread{
 String message = input.nextLine(); //IMPORTANT blocking call
     Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, String.format("Received the message: %1$S ",message));
     while (!message.equals(ProtocolStrings.STOP)) {
-      writer.println(message.toUpperCase());
+      echoS.send(message);
       Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, String.format("Received the message: %1$S ",message.toUpperCase()));
       message = input.nextLine(); //IMPORTANT blocking call
     }
