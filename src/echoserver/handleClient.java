@@ -22,6 +22,7 @@ public class handleClient extends Thread{
     Scanner input;
     PrintWriter writer;
     Socket socket;
+    EchoServer echoS = new EchoServer();
     
     public handleClient(Socket socket) throws IOException {
     input = new Scanner(socket.getInputStream());
@@ -41,6 +42,7 @@ String message = input.nextLine(); //IMPORTANT blocking call
     writer.println(ProtocolStrings.STOP);//Echo the stop message back to the client for a nice closedown
         try {
             socket.close();
+            echoS.removeHandler(this);
         } catch (IOException ex) {
             Logger.getLogger(handleClient.class.getName()).log(Level.SEVERE, null, ex);
         }
