@@ -5,17 +5,32 @@
  */
 package Presentation;
 
+import echoclient.*;
+import echoclient.EchoListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author jones
  */
-public class Gui extends javax.swing.JFrame {
+public class Gui extends javax.swing.JFrame implements EchoListener {
 
     /**
      * Creates new form Gui
      */
+    EchoClient echoclient;
     public Gui() {
-        initComponents();
+        try {
+            initComponents();
+            echoclient = new EchoClient();
+             echoclient.connect("localhost", 9090);
+             echoclient.registerEchoListener(this);
+             echoclient.start();
+        } catch (IOException ex) {
+            Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -258,4 +273,8 @@ public class Gui extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldSendTo;
     private javax.swing.JTextField jTextFieldUser;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void messageArrived(String data) {
+    }
 }
