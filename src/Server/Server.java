@@ -11,5 +11,6 @@ package Server;
  */
 public class Server {
     int hej = 2;
+   int test;
 
 }
