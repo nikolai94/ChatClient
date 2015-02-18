@@ -236,14 +236,16 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
     private void jButtonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectActionPerformed
         int port = 0;
         String ip = null;
+        String navn = null;
+        navn= jTextFieldUser.getText();
         ip = jTextFieldIP2.getText();
         port = Integer.parseInt(jTextFieldPort.getText());
-        if (ip == null || port == 0) {
+        if (ip == null || port == 0 || navn == null ) {
             JOptionPane.showMessageDialog(null, "Udfyld port og ip");
         } else {
             try {
                 echoclient = new EchoClient();
-                echoclient.connect(ip, port);
+                echoclient.connect(ip, port,navn);
                 echoclient.registerEchoListener(this);
                 echoclient.start();
             } catch (IOException ex) {

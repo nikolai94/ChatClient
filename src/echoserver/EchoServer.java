@@ -19,7 +19,7 @@ public class EchoServer {
   private static boolean keepRunning = true;
   private static ServerSocket serverSocket;
   private static final Properties properties = Utils.initProperties("server.properties");
- ArrayList<HandleClient> clients = new ArrayList<HandleClient>();
+  public ArrayList<HandleClient> clients = new ArrayList<HandleClient>();
 
   public static void stopServer() {
     keepRunning = false;

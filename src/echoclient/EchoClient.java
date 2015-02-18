@@ -23,7 +23,7 @@ public class EchoClient extends Thread implements EchoListener
   List<EchoListener> listeners;
   
   
-  public void connect(String address, int port) throws UnknownHostException, IOException
+  public void connect(String address, int port, String navn) throws UnknownHostException, IOException
   {
       
     this.port = port;
@@ -32,6 +32,7 @@ public class EchoClient extends Thread implements EchoListener
     input = new Scanner(socket.getInputStream());
     output = new PrintWriter(socket.getOutputStream(), true);  //Set to true, to get auto flush behaviour
     listeners = new ArrayList();
+    
   }
   
   public void registerEchoListener(EchoListener l){
@@ -87,35 +88,35 @@ public class EchoClient extends Thread implements EchoListener
     }
  }  
   
-  public static void main(String[] args)
-  {   
-    int port = 9090;
-    String ip = "localhost";
-    if(args.length == 2){
-      port = Integer.parseInt(args[0]);
-      ip = args[1];
-    }
-    try {
-      EchoClient tester = new EchoClient();
-      
-      tester.connect(ip, port);
-      tester.registerEchoListener(tester);
-      
-      System.out.println("Sending 'Hello world'");
-        tester.start();
-      tester.send("Hello World");
-      System.out.println("Waiting for a reply");
-    
-      tester.stopNew();      
-      //System.in.read();      
-    } catch (UnknownHostException ex) {
-      Logger.getLogger(EchoClient.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (IOException ex) {
-      Logger.getLogger(EchoClient.class.getName()).log(Level.SEVERE, null, ex);
-    }
-  }
+//  public static void main(String[] args)
+//  {   
+//    int port = 9090;
+//    String ip = "localhost";
+//    if(args.length == 2){
+//      port = Integer.parseInt(args[0]);
+//      ip = args[1];
+//    }
+//    try {
+//      EchoClient tester = new EchoClient();
+//
+//      tester.connect(ip, port);
+//      tester.registerEchoListener(tester);
+//
+//      System.out.println("Sending 'Hello world'");
+//        tester.start();
+//      tester.send("Hello World");
+//      System.out.println("Waiting for a reply");
+//
+//      tester.stopNew();      
+//      //System.in.read();      
+//    } catch (UnknownHostException ex) {
+//      Logger.getLogger(EchoClient.class.getName()).log(Level.SEVERE, null, ex);
+//    } catch (IOException ex) {
+//      Logger.getLogger(EchoClient.class.getName()).log(Level.SEVERE, null, ex);
+//    }
+//  }
+//
 
-  
     @Override
     public void messageArrived(String data) {
         //System.out.println(data);
