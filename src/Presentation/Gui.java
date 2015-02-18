@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,17 +25,12 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
      */
     EchoClient echoclient;
     DefaultListModel beskeder = new DefaultListModel();
-    ArrayList<String> msg  = new ArrayList<String>();
+    ArrayList<String> msg = new ArrayList<String>();
+
     public Gui() {
-        try {
-            initComponents();
-            echoclient = new EchoClient();
-             echoclient.connect("testjonathan1.cloudapp.net", 7777);
-             echoclient.registerEchoListener(this);
-             echoclient.start();
-        } catch (IOException ex) {
-            Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        initComponents();
+
     }
 
     /**
@@ -69,6 +65,7 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
 
         jLabel1.setText("IP:");
 
+        jTextFieldPort.setText("7777");
         jTextFieldPort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPortActionPerformed(evt);
@@ -85,6 +82,7 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
 
         jLabel3.setText("userID:");
 
+        jTextFieldIP2.setText("testjonathan1.cloudapp.net");
         jTextFieldIP2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldIP2ActionPerformed(evt);
@@ -92,6 +90,11 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
         });
 
         jButtonConnect.setText("Connect");
+        jButtonConnect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConnectActionPerformed(evt);
+            }
+        });
 
         jButtonDisconnect.setText("Disconnect");
 
@@ -215,7 +218,7 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldPortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPortActionPerformed
-      
+
     }//GEN-LAST:event_jTextFieldPortActionPerformed
 
     private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserActionPerformed
@@ -227,8 +230,27 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
     }//GEN-LAST:event_jTextFieldIP2ActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-          echoclient.send(jTextFieldSendText.getText());
+        echoclient.send(jTextFieldSendText.getText());
     }//GEN-LAST:event_jButtonAddActionPerformed
+
+    private void jButtonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectActionPerformed
+        int port = 0;
+        String ip = null;
+        ip = jTextFieldIP2.getText();
+        port = Integer.parseInt(jTextFieldPort.getText());
+        if (ip == null || port == 0) {
+            JOptionPane.showMessageDialog(null, "Udfyld port og ip");
+        } else {
+            try {
+                echoclient = new EchoClient();
+                echoclient.connect(ip, port);
+                echoclient.registerEchoListener(this);
+                echoclient.start();
+            } catch (IOException ex) {
+                Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButtonConnectActionPerformed
 
     /**
      * @param args the command line arguments
