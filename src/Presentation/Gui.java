@@ -29,7 +29,7 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
         try {
             initComponents();
             echoclient = new EchoClient();
-             echoclient.connect("localhost", 9090);
+             echoclient.connect("testjonathan1.cloudapp.net", 7777);
              echoclient.registerEchoListener(this);
              echoclient.start();
         } catch (IOException ex) {

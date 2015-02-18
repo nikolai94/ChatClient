@@ -1,1 +1,1 @@
-java -cp dist/ChatClient.jar Presentation.Gui 9090 168.63.66.214
+java -cp dist/ChatClient.jar Presentation.Gui 7777 testjonathan1.cloudapp.net
