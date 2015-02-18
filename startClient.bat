@@ -1,1 +1,1 @@
-java -cp Echo.jar Presentation.Gui 9090 localhost
+java -cp dist/ChatClient.jar Presentation.Gui 9090 localhost
