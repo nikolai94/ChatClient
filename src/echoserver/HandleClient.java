@@ -17,14 +17,14 @@ import shared.ProtocolStrings;
  *
  * @author nikolai
  */
-public class handleClient extends Thread{
+public class HandleClient extends Thread{
     
     Scanner input;
     PrintWriter writer;
     Socket socket;
     EchoServer echoS;
     
-    public handleClient(Socket socket, EchoServer echoServer) throws IOException {
+    public HandleClient(Socket socket, EchoServer echoServer) throws IOException {
     echoS = echoServer;
     input = new Scanner(socket.getInputStream());
     writer = new PrintWriter(socket.getOutputStream(), true);
@@ -50,7 +50,7 @@ String message = input.nextLine(); //IMPORTANT blocking call
             socket.close();
             echoS.removeHandler(this);
         } catch (IOException ex) {
-            Logger.getLogger(handleClient.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HandleClient.class.getName()).log(Level.SEVERE, null, ex);
         }
     Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "Closed a Connection");
     }
