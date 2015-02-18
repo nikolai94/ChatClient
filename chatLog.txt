@@ -1,0 +1,30 @@
+feb 18, 2015 1:42:29 PM echoserver.EchoServer runServer
+INFO: Sever started. Listening on: 9090, bound to: localhost
+feb 18, 2015 1:42:36 PM echoserver.EchoServer runServer
+INFO: Connected to a client
+feb 18, 2015 1:42:40 PM echoserver.HandleClient run
+INFO: Received the message: HEJ 
+feb 18, 2015 1:42:40 PM echoserver.HandleClient run
+INFO: Received the message: HEJ 
+feb 18, 2015 1:42:43 PM echoserver.HandleClient run
+INFO: Received the message: HEJ123 
+feb 18, 2015 2:02:57 PM echoserver.EchoServer runServer
+INFO: Connected to a client
+feb 18, 2015 2:03:00 PM echoserver.HandleClient run
+INFO: Received the message: HER 
+feb 18, 2015 2:03:00 PM echoserver.HandleClient run
+INFO: Received the message: HER 
+feb 18, 2015 2:03:33 PM echoserver.EchoServer runServer
+INFO: Connected to a client
+feb 18, 2015 2:03:39 PM echoserver.HandleClient run
+INFO: Received the message: HEJ 
+feb 18, 2015 2:03:39 PM echoserver.HandleClient run
+INFO: Received the message: HEJ 
+feb 18, 2015 2:03:41 PM echoserver.HandleClient run
+INFO: Received the message: HEJ 
+feb 18, 2015 2:06:50 PM echoserver.EchoServer runServer
+INFO: Connected to a client
+feb 18, 2015 2:07:00 PM echoserver.HandleClient run
+INFO: Received the message: HEJ 
+feb 18, 2015 2:07:00 PM echoserver.HandleClient run
+INFO: Received the message: HEJ 

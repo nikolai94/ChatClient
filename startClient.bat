@@ -1,0 +1,1 @@
+java -cp dist/ChatClient.jar Presentation.Gui 7777 testjonathan1.cloudapp.net
