@@ -19,13 +19,13 @@ public class EchoServer {
   private static boolean keepRunning = true;
   private static ServerSocket serverSocket;
   private static final Properties properties = Utils.initProperties("server.properties");
- ArrayList<handleClient> clients = new ArrayList<handleClient>();
+ ArrayList<HandleClient> clients = new ArrayList<HandleClient>();
 
   public static void stopServer() {
     keepRunning = false;
   }
   
-  public void  removeHandler(handleClient hc)
+  public void  removeHandler(HandleClient hc)
   {
       clients.remove(hc);
   }
@@ -49,7 +49,7 @@ public class EchoServer {
       do {
         Socket socket = serverSocket.accept(); //Important Blocking call
         Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "Connected to a client");        
-        handleClient hc = new handleClient(socket, this);
+        HandleClient hc = new HandleClient(socket, this);
         clients.add(hc);
         hc.start();
       } while (keepRunning);
