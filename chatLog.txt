@@ -1,2 +1,26 @@
-feb 18, 2015 12:44:55 PM echoserver.EchoServer runServer
+feb 18, 2015 1:44:50 PM echoserver.EchoServer runServer
 INFO: Sever started. Listening on: 9090, bound to: localhost
+feb 18, 2015 1:45:52 PM echoserver.EchoServer runServer
+INFO: Connected to a client
+feb 18, 2015 1:45:59 PM echoserver.EchoServer runServer
+INFO: Connected to a client
+feb 18, 2015 1:46:20 PM echoserver.HandleClient run
+INFO: Received the message: SEND#NAVN1,NAVN2#HELLO ALL 
+feb 18, 2015 1:46:20 PM echoserver.HandleClient run
+INFO: Received the message: SEND#NAVN1,NAVN2#HELLO ALL 
+feb 18, 2015 1:46:48 PM echoserver.HandleClient run
+INFO: Received the message: MESSAGE#NAVN1#HELLO ALL 
+feb 18, 2015 1:47:01 PM echoserver.HandleClient run
+INFO: Received the message: SEND#NAVN2#HELLO NAVN2 
+feb 18, 2015 1:47:20 PM echoserver.HandleClient run
+INFO: Received the message: MESSAGE#NAVN1#HELLO NAVN2 
+feb 18, 2015 1:47:39 PM echoserver.HandleClient run
+INFO: Received the message: SEND#*#HELLO ALL 
+feb 18, 2015 1:48:00 PM echoserver.HandleClient run
+INFO: Received the message: MESSAGE#NAVN1#HELLO ALL 
+feb 18, 2015 1:48:11 PM echoserver.HandleClient run
+INFO: Received the message: CLOSE# 
+feb 18, 2015 1:48:11 PM echoserver.HandleClient run
+INFO: Received the message: CLOSE# 
+feb 18, 2015 1:48:30 PM echoserver.HandleClient run
+INFO: Received the message: ONLINE#NAVN1 

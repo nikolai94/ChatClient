@@ -1,12 +1,12 @@
-feb. 17, 2015 12:27:51 PM echoserver.EchoServer runServer
+feb 18, 2015 1:27:13 PM echoserver.EchoServer runServer
 INFO: Sever started. Listening on: 9090, bound to: localhost
-feb. 17, 2015 12:28:33 PM echoserver.EchoServer runServer
-INFO: Connected to a client
-feb. 17, 2015 12:28:37 PM echoserver.handleClient run
-INFO: Received the message: TEST 
-feb. 17, 2015 12:28:37 PM echoserver.handleClient run
-INFO: Received the message: TEST 
-feb. 17, 2015 12:29:39 PM echoserver.handleClient run
-INFO: Received the message:  CONNECT#NAVN1 
-feb. 17, 2015 12:29:53 PM echoserver.handleClient run
-INFO: Received the message: CONNECT#NAVN1 
+feb 18, 2015 1:27:13 PM echoserver.EchoServer runServer
+SEVERE: null
+java.net.BindException: Address already in use
+	at java.net.PlainSocketImpl.socketBind(Native Method)
+	at java.net.AbstractPlainSocketImpl.bind(AbstractPlainSocketImpl.java:376)
+	at java.net.ServerSocket.bind(ServerSocket.java:376)
+	at java.net.ServerSocket.bind(ServerSocket.java:330)
+	at echoserver.EchoServer.runServer(EchoServer.java:48)
+	at echoserver.EchoServer.main(EchoServer.java:67)
+
