@@ -35,7 +35,7 @@ public class HandleClient extends Thread {
     public void send(String msg) {
         writer.println(msg);
     }
-    public void split(String msg)
+    public synchronized void split(String msg)
     {
         String[] beskeder = msg.split("#");
         System.out.println(" beskeden "+msg);
