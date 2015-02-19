@@ -70,6 +70,30 @@ public class EchoServer {
 //  }
   public void send(String afsender, String modtager,String besked)
   {
+      if(modtager.equals("*"))
+      {
+            for (String username : clients.keySet())
+            {
+                   clients.get(username).send(besked);
+            }
+      }
+      else{
+          String[] userNames = modtager.split(",");
+          
+          for (int i = 0; i < userNames.length; i++) {
+            
+                for (String username : clients.keySet())
+                {
+                    System.out.println("names: "+userNames[i]);
+                    System.out.println("username: "+username);
+                       if(userNames[i].equalsIgnoreCase(username)){
+                            clients.get(username).send(besked);
+                       }
+                }
+            
+          }
+      }
+      
       
   }
   private void runServer()
