@@ -1,5 +1,6 @@
 package echoclient;
 
+import echoserver.EchoServer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetAddress;
@@ -22,7 +23,6 @@ public class EchoClient extends Thread implements EchoListener
   private PrintWriter output;
   List<EchoListener> listeners;
   
-  
   public void connect(String address, int port, String navn) throws UnknownHostException, IOException
   {
       
@@ -32,7 +32,7 @@ public class EchoClient extends Thread implements EchoListener
     input = new Scanner(socket.getInputStream());
     output = new PrintWriter(socket.getOutputStream(), true);  //Set to true, to get auto flush behaviour
     listeners = new ArrayList();
-    
+      send("Online "+ navn);
   }
   
   public void registerEchoListener(EchoListener l){
