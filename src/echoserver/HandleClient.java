@@ -23,6 +23,7 @@ public class HandleClient extends Thread {
     PrintWriter writer;
     Socket socket;
     EchoServer echoS;
+    String brugernavn;
 
     public HandleClient(Socket socket, EchoServer echoServer) throws IOException {
         echoS = echoServer;
@@ -33,6 +34,20 @@ public class HandleClient extends Thread {
 
     public void send(String msg) {
         writer.println(msg);
+    }
+    public void split(String msg)
+    {
+        String[] beskeder = msg.split("#");
+        String token = beskeder[0];
+        if(token.equals(ProtocolStrings.CONNECT))
+        {
+            echoS.addclient(beskeder[1], this);
+            brugernavn = beskeder[1];
+        }
+        else if (token.equals(ProtocolStrings.SEND))
+        {
+            echoS.send(brugernavn, beskeder[1], beskeder[2]);
+        }
     }
 
     @Override
@@ -50,20 +65,21 @@ public class HandleClient extends Thread {
             }
 
         } else {
-
-            echoS.addclient(arr[1], this);
-            
+            split(message);
+           
             Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, String.format("Received the message: %1$S ", message));
+            
+            
             while (!message.equals(ProtocolStrings.STOP)) {
-              echoS.send(message);
+           ///  echoS.send(message);
               
                
               
-                Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, String.format("Received the message: %1$S ", message.toUpperCase()));
+                //Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, String.format("Received the message: %1$S ", message.toUpperCase()));
                 message = input.nextLine(); //IMPORTANT blocking call
-                writer.println(message);
+                split(message);
             }
-            writer.println(ProtocolStrings.STOP);//Echo the stop message back to the client for a nice closedown
+          
             try {
                 socket.close();
                 echoS.removeHandler(this);

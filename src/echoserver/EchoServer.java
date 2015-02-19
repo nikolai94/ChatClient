@@ -59,15 +59,18 @@ public class EchoServer {
       }
       
   }
-  public void send(String msg)
-  { 
-      System.out.println("In EchoServer.send()");
-      for (String username : clients.keySet())
-      {
-          System.out.println("hej " +clients.get(username));
-         clients.get(username).send(msg);
-          //clients.get(hc).send(msg);
-      }
+//  public void send(String msg)
+//  { 
+//      System.out.println("In EchoServer.send()");
+//      for (String username : clients.keySet())
+//      {
+//         clients.get(username).send(msg);
+//          //clients.get(hc).send(msg);
+//      }
+//  }
+  public void send(String afsender, String modtager,String besked)
+  {
+      
   }
   private void runServer()
   {
