@@ -1,0 +1,26 @@
+/* 
+    Created on : 19-02-2015, 10:16:40
+    Author     : petersodborgchristensen
+*/
+body{
+    background-color:#CCE1E8;
+}
+
+#container{
+    width:800px;
+    height:auto;
+    border:1px solid;
+    margin-left:auto;
+    margin-right:auto;
+    padding:10px 10px 10px 50px;
+    box-shadow:2px 2px 5px #2B0000;
+    background-color: white;
+}
+
+#bottom{
+    width:800px;
+    height:auto;
+    text-align: center;
+}
+
+
