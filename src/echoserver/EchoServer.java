@@ -34,8 +34,10 @@ public class EchoServer {
   public void addclient(String navn, HandleClient hc)
   {
       clients.put(navn, hc);
+      sendonlinemsg();
+      
   }
-  public String makeonlinemsg()
+  public void sendonlinemsg()
   {
       String msg = ProtocolStrings.Online + "#";
       int antal = 0 ;
@@ -49,9 +51,13 @@ public class EchoServer {
            {
              msg += username + ",";
            }
-          
+  
       }
-      return msg; // fjern komma
+      for(HandleClient hc : clients.values())
+      {
+          hc.send(msg);
+      }
+      
   }
   public void send(String msg)
   { 

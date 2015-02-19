@@ -53,12 +53,12 @@ public class HandleClient extends Thread {
 
             echoS.addclient(arr[1], this);
             
-            
-            
             Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, String.format("Received the message: %1$S ", message));
             while (!message.equals(ProtocolStrings.STOP)) {
               echoS.send(message);
-                writer.println(echoS.makeonlinemsg());
+              
+               
+              
                 Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, String.format("Received the message: %1$S ", message.toUpperCase()));
                 message = input.nextLine(); //IMPORTANT blocking call
                 writer.println(message);
