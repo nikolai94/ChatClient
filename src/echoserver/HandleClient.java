@@ -32,10 +32,10 @@ public class HandleClient extends Thread {
         this.socket = socket;
     }
 
-    public void send(String msg) {
+    public synchronized void send(String msg) {
         writer.println(msg);
     }
-    public synchronized void split(String msg)
+    public void split(String msg)
     {
         String[] beskeder = msg.split("#");
         System.out.println(" beskeden "+msg);
