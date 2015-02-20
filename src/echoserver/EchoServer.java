@@ -23,20 +23,23 @@ public class EchoServer {
   private static final Properties properties = Utils.initProperties("server.properties");
   private Map<String, HandleClient> clients = new HashMap();
 
+
   public static void stopServer() {
     keepRunning = false;
   }
   
-  public void  removeHandler(String brugernavn)
+  public int removeHandler(String brugernavn)
   {
       clients.remove(brugernavn);  /// HUSK AT HENT KEyen.
       sendonlinemsg();
+      return clients.size();
   
   }
-  public void addclient(String navn, HandleClient hc)
+  public int addclient(String navn, HandleClient hc)
   {
       clients.put(navn, hc);
       sendonlinemsg();
+      return clients.size();
       
   }
   public void sendonlinemsg()

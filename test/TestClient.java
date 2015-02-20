@@ -38,7 +38,7 @@ public class TestClient {
       lock = new CountDownLatch(1);
       tesresult = "";
       EchoClient tester = new EchoClient();
-      tester.connect("localhost", 9090);
+      tester.connect("localhost", 9090,"Jannick");
       tester.registerEchoListener(new EchoListener() {
 
           @Override

@@ -12,6 +12,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import shared.ProtocolStrings;
+import Presentation.Usersonline;
 
 /**
  *
@@ -24,7 +25,7 @@ public class  HandleClient extends Thread {
     Socket socket;
     EchoServer echoS;
     String brugernavn;
-
+    Usersonline uo = new Usersonline();
     public  HandleClient(Socket socket, EchoServer echoServer)  throws IOException {
         echoS = echoServer;
         input = new Scanner(socket.getInputStream());
@@ -43,7 +44,8 @@ public class  HandleClient extends Thread {
        
         if(token.equals(ProtocolStrings.CONNECT))
         {
-            echoS.addclient(beskeder[1], this);
+           int size = echoS.addclient(beskeder[1], this);
+           uo.SaveOnlineUsers(size);
             brugernavn = beskeder[1];
         }
         else if (token.equals(ProtocolStrings.SEND))
@@ -57,7 +59,8 @@ public class  HandleClient extends Thread {
         else if(token.equals(ProtocolStrings.STOP)){
              try {
                 socket.close();
-                echoS.removeHandler(brugernavn);
+               int size = echoS.removeHandler(brugernavn);
+                uo.SaveOnlineUsers(size);
             } catch (IOException ex) {
                 Logger.getLogger(HandleClient.class.getName()).log(Level.SEVERE, null, ex);
             }
