@@ -38,9 +38,9 @@ public class  HandleClient extends Thread {
     public void split(String msg)
     {
         String[] beskeder = msg.split("#");
-        System.out.println(" beskeden "+msg);
+       
         String token = beskeder[0];
-        System.out.println(token +" skal være == send");
+       
         if(token.equals(ProtocolStrings.CONNECT))
         {
             echoS.addclient(beskeder[1], this);
@@ -48,7 +48,7 @@ public class  HandleClient extends Thread {
         }
         else if (token.equals(ProtocolStrings.SEND))
         {
-            //System.out.println("else");
+            
             echoS.send(brugernavn, beskeder[1], beskeder[2]);
             Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "Sender besked. "+brugernavn+" skriver "+beskeder[2] +" til " +beskeder[1]);
             

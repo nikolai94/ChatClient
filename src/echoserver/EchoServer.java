@@ -61,15 +61,7 @@ public class EchoServer {
       }
       
   }
-//  public void send(String msg)
-//  { 
-//      System.out.println("In EchoServer.send()");
-//      for (String username : clients.keySet())
-//      {
-//         clients.get(username).send(msg);
-//          //clients.get(hc).send(msg);
-//      }
-//  }
+
   public void send(String afsender, String modtager,String besked)
   {
       if(modtager.equals("*"))
@@ -86,8 +78,6 @@ public class EchoServer {
             
                 for (String username : clients.keySet())
                 {
-                    //System.out.println("names: "+userNames[i]);
-                    //System.out.println("username: "+username);
                        if(userNames[i].equalsIgnoreCase(username) || username.equals(afsender)){
                             clients.get(username).send(ProtocolStrings.MESSAGE+"#"+afsender+"#"+besked);
                        }

@@ -234,7 +234,6 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
         } else {
             for (int j = 0; j < l.size(); j++) {
                 usernames[j] = (String) l.get(j);
-                System.out.println(usernames[j] + " NAVN");
                 if (j == l.size()) {
                     str += usernames[j];
                 } else {
@@ -243,7 +242,6 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
 
             }
             sendBesked = ProtocolStrings.SEND + "#" + str + "#" + jTextFieldSendText.getText();
-            System.out.println(sendBesked + " beskeden");
             echoclient.send(sendBesked);
         }
     }//GEN-LAST:event_jButtonAddActionPerformed
@@ -332,7 +330,6 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
 
     @Override
     public void messageArrived(String data) {
-        //System.out.println("besked modtaget");
         if (data.startsWith("ONLINE#")) {
             online = new DefaultListModel();
 
