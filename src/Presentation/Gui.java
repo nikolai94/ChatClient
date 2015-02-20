@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import shared.*;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
      */
     EchoClient echoclient;
     DefaultListModel beskeder = new DefaultListModel();
+    DefaultListModel online = new DefaultListModel();
     ArrayList<String> msg = new ArrayList<String>();
 
     public Gui() {
@@ -51,7 +53,7 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
         jButtonConnect = new javax.swing.JButton();
         jButtonDisconnect = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jListOnline = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList();
         jLabel4 = new javax.swing.JLabel();
@@ -97,13 +99,18 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
         });
 
         jButtonDisconnect.setText("Disconnect");
+        jButtonDisconnect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDisconnectActionPerformed(evt);
+            }
+        });
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        jListOnline.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(jListOnline);
 
         jScrollPane2.setViewportView(jList2);
 
@@ -230,7 +237,9 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
     }//GEN-LAST:event_jTextFieldIP2ActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-        echoclient.send(jTextFieldSendText.getText());
+     String sendBesked;
+
+     //echoclient.send(jTextFieldSendText.getText());
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectActionPerformed
@@ -252,7 +261,13 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
                 Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        jTextFieldSendText.setText("Du har nu connect");
     }//GEN-LAST:event_jButtonConnectActionPerformed
+
+    private void jButtonDisconnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisconnectActionPerformed
+        echoclient.send(ProtocolStrings.STOP);
+        jTextFieldSendText.setText("Du har nu disconnect");
+    }//GEN-LAST:event_jButtonDisconnectActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,8 +314,8 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList jList1;
     private javax.swing.JList jList2;
+    private javax.swing.JList jListOnline;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextFieldIP2;
@@ -312,9 +327,26 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
 
     @Override
     public void messageArrived(String data) {
-        System.out.println("besked modtaget");
-        msg.add(data);
-        beskeder.addElement(data);
-        jList2.setModel(beskeder);
+        //System.out.println("besked modtaget");
+        if(data.startsWith("ONLINE#")){
+            online = new DefaultListModel();
+            
+            data = data.substring(7);
+            String[] onlineUserNames = data.split(",");
+            for (int i = 0; i < onlineUserNames.length; i++) {
+              online.addElement(onlineUserNames[i]);
+            }
+            jListOnline.setModel(online);
+        }
+        else if(data.startsWith("MESSAGE#"))
+        {
+            String[] newMsg = data.split("#");
+            
+            msg.add(newMsg[1]+": "+newMsg[2]);
+            beskeder.addElement(newMsg[1]+": "+newMsg[2]);
+            jList2.setModel(beskeder);
+        } 
+        
+        
     }
 }

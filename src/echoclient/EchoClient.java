@@ -32,7 +32,7 @@ public class EchoClient extends Thread implements EchoListener
     input = new Scanner(socket.getInputStream());
     output = new PrintWriter(socket.getOutputStream(), true);  //Set to true, to get auto flush behaviour
     listeners = new ArrayList();
-      send("Online "+ navn);
+      send("CONNECT#"+ navn);
   }
   
   public void registerEchoListener(EchoListener l){
@@ -119,8 +119,8 @@ public class EchoClient extends Thread implements EchoListener
 
     @Override
     public void messageArrived(String data) {
-        //System.out.println(data);
    
+        
     }
 
    

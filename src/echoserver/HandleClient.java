@@ -17,7 +17,7 @@ import shared.ProtocolStrings;
  *
  * @author nikolai
  */
-public class HandleClient extends Thread {
+public class  HandleClient extends Thread {
 
     Scanner input;
     PrintWriter writer;
@@ -25,7 +25,7 @@ public class HandleClient extends Thread {
     EchoServer echoS;
     String brugernavn;
 
-    public HandleClient(Socket socket, EchoServer echoServer) throws IOException {
+    public  HandleClient(Socket socket, EchoServer echoServer)  throws IOException {
         echoS = echoServer;
         input = new Scanner(socket.getInputStream());
         writer = new PrintWriter(socket.getOutputStream(), true);
@@ -48,22 +48,34 @@ public class HandleClient extends Thread {
         }
         else if (token.equals(ProtocolStrings.SEND))
         {
-            System.out.println("else");
+            //System.out.println("else");
             echoS.send(brugernavn, beskeder[1], beskeder[2]);
             
         }
+        //sluk
+        else{
+             try {
+                socket.close();
+                echoS.removeHandler(brugernavn);
+            } catch (IOException ex) {
+                Logger.getLogger(HandleClient.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       
     }
 
     @Override
     public void run() {
 
         String message = input.nextLine(); //IMPORTANT blocking call
+        
+       
         String arr[] = message.split("#");
         String token = arr[0];
         if (!token.equals(ProtocolStrings.CONNECT) || arr.length != 2) {
             try {
                 socket.close();
-                echoS.removeHandler(this);
+                echoS.removeHandler(brugernavn);
             } catch (IOException ex) {
                 Logger.getLogger(HandleClient.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -75,14 +87,17 @@ public class HandleClient extends Thread {
               
                 message = input.nextLine(); //IMPORTANT blocking call
                 split(message);
+                
             }
           
-            try {
+            /*try {
                 socket.close();
-                echoS.removeHandler(this);
+                echoS.removeHandler(brugernavn);
             } catch (IOException ex) {
                 Logger.getLogger(HandleClient.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }*/
+            
+            
             Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "Closed a Connection");
         }
     }

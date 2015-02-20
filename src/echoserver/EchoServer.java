@@ -27,9 +27,11 @@ public class EchoServer {
     keepRunning = false;
   }
   
-  public void  removeHandler(HandleClient hc)
+  public void  removeHandler(String brugernavn)
   {
-      clients.remove(hc);  /// HUSK AT HENT KEyen.
+      clients.remove(brugernavn);  /// HUSK AT HENT KEyen.
+      sendonlinemsg();
+  
   }
   public void addclient(String navn, HandleClient hc)
   {
@@ -74,7 +76,7 @@ public class EchoServer {
       {
             for (String username : clients.keySet())
             {
-                   clients.get(username).send(besked);
+                   clients.get(username).send(ProtocolStrings.MESSAGE+"#"+afsender+"#"+besked);
             }
       }
       else{
@@ -84,10 +86,10 @@ public class EchoServer {
             
                 for (String username : clients.keySet())
                 {
-                    System.out.println("names: "+userNames[i]);
-                    System.out.println("username: "+username);
+                    //System.out.println("names: "+userNames[i]);
+                    //System.out.println("username: "+username);
                        if(userNames[i].equalsIgnoreCase(username)){
-                            clients.get(username).send(besked);
+                            clients.get(username).send(ProtocolStrings.MESSAGE+"#"+afsender+"#"+besked);
                        }
                 }
             
@@ -109,7 +111,7 @@ public class EchoServer {
       do {
         Socket socket = serverSocket.accept(); //Important Blocking call
         Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "Connected to a client");        
-        HandleClient hc = new HandleClient(socket, this);
+        HandleClient hc =  new HandleClient(socket, this);
       //  clients.add(hc);
         hc.start();
       } while (keepRunning);
