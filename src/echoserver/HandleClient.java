@@ -50,10 +50,11 @@ public class  HandleClient extends Thread {
         {
             //System.out.println("else");
             echoS.send(brugernavn, beskeder[1], beskeder[2]);
+            Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "Sender besked. "+brugernavn+" skriver "+beskeder[2] +" til " +beskeder[1]);
             
         }
         //sluk
-        else{
+        else if(token.equals(ProtocolStrings.STOP)){
              try {
                 socket.close();
                 echoS.removeHandler(brugernavn);

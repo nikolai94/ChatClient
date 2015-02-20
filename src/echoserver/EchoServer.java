@@ -88,7 +88,7 @@ public class EchoServer {
                 {
                     //System.out.println("names: "+userNames[i]);
                     //System.out.println("username: "+username);
-                       if(userNames[i].equalsIgnoreCase(username)){
+                       if(userNames[i].equalsIgnoreCase(username) || username.equals(afsender)){
                             clients.get(username).send(ProtocolStrings.MESSAGE+"#"+afsender+"#"+besked);
                        }
                 }
@@ -122,14 +122,16 @@ public class EchoServer {
   }
 
   public static void main(String[] args) {
-      
+      String logFile = "";
      try{
-       String logFile = properties.getProperty("logFile"); 
-      Utils.setLogFile(logFile,EchoServer.class.getName());
-          new EchoServer().runServer();
-     
+          logFile= properties.getProperty("logFile"); 
+         System.out.println(logFile + " logfilen");
+          Utils.setLogFile(logFile,EchoServer.class.getName());
+         new EchoServer().runServer();    
+        
      } 
      finally{
+        
       Utils.closeLogger(EchoServer.class.getName());
      
      } 

@@ -1,8 +1,0 @@
-feb. 19, 2015 12:11:30 PM echoserver.EchoServer runServer
-INFO: Sever started. Listening on: 9090, bound to: localhost
-feb. 19, 2015 12:11:47 PM echoserver.EchoServer runServer
-INFO: Connected to a client
-feb. 19, 2015 12:12:07 PM echoserver.EchoServer runServer
-INFO: Connected to a client
-feb. 19, 2015 12:13:37 PM echoserver.EchoServer runServer
-INFO: Connected to a client

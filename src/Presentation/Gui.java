@@ -9,6 +9,7 @@ import echoclient.*;
 import echoclient.EchoListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -56,12 +57,11 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
         jListOnline = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList();
-        jLabel4 = new javax.swing.JLabel();
-        jTextFieldSendTo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextFieldSendText = new javax.swing.JTextField();
         jButtonAdd = new javax.swing.JButton();
         jButtonClear = new javax.swing.JButton();
+        jLabelfejlbesked = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,8 +109,6 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
 
         jScrollPane2.setViewportView(jList2);
 
-        jLabel4.setText("Send to:");
-
         jLabel5.setText("Send text");
 
         jButtonAdd.setText("Send");
@@ -121,6 +119,8 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
         });
 
         jButtonClear.setText("Clear");
+
+        jLabelfejlbesked.setFont(new java.awt.Font("Trebuchet MS", 3, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,54 +141,50 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(126, 126, 126)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldPort, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButtonConnect)
-                                        .addGap(74, 74, 74)
-                                        .addComponent(jButtonDisconnect))))
+                                .addComponent(jButtonConnect)
+                                .addGap(74, 74, 74)
+                                .addComponent(jButtonDisconnect))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(17, 17, 17)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextFieldSendTo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonAdd)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonClear)))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextFieldSendText, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(149, Short.MAX_VALUE))
+                                .addGap(107, 107, 107)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldPort, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonAdd)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonClear)
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabelfejlbesked, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel5)
+                        .addComponent(jTextFieldSendText, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(152, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(131, 131, 131)
                     .addComponent(jTextFieldIP2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(515, Short.MAX_VALUE)))
+                    .addContainerGap(518, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2))
-                    .addComponent(jTextFieldPort, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(jTextFieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
+                        .addGap(73, 73, 73)
+                        .addComponent(jTextFieldPort, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonConnect)
                             .addComponent(jButtonDisconnect))))
@@ -197,23 +193,20 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldSendText, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldSendText, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldSendTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAdd)
-                    .addComponent(jButtonClear))
+                    .addComponent(jButtonClear)
+                    .addComponent(jLabelfejlbesked, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAdd))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(73, 73, 73)
                     .addComponent(jTextFieldIP2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(498, Short.MAX_VALUE)))
+                    .addContainerGap(499, Short.MAX_VALUE)))
         );
 
         pack();
@@ -232,24 +225,42 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
     }//GEN-LAST:event_jTextFieldIP2ActionPerformed
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-     String sendBesked;
+        String sendBesked;
+        List l = jListOnline.getSelectedValuesList();
+        String[] usernames = new String[l.size()];
+        String str = "";
+        if (l.size() == 0) {
+            jLabelfejlbesked.setText("Du har ikke valgt en modtager");
+        } else {
+            for (int j = 0; j < l.size(); j++) {
+                usernames[j] = (String) l.get(j);
+                System.out.println(usernames[j] + " NAVN");
+                if (j == l.size()) {
+                    str += usernames[j];
+                } else {
+                    str += usernames[j] + ",";
+                }
 
-     //echoclient.send(jTextFieldSendText.getText());
+            }
+            sendBesked = ProtocolStrings.SEND + "#" + str + "#" + jTextFieldSendText.getText();
+            System.out.println(sendBesked + " beskeden");
+            echoclient.send(sendBesked);
+        }
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectActionPerformed
         int port = 0;
         String ip = null;
         String navn = null;
-        navn= jTextFieldUser.getText();
+        navn = jTextFieldUser.getText();
         ip = jTextFieldIP2.getText();
         port = Integer.parseInt(jTextFieldPort.getText());
-        if (ip == null || port == 0 || navn == null ) {
+        if (ip == null || port == 0 || navn == null) {
             JOptionPane.showMessageDialog(null, "Udfyld port og ip");
         } else {
             try {
                 echoclient = new EchoClient();
-                echoclient.connect(ip, port,navn);
+                echoclient.connect(ip, port, navn);
                 echoclient.registerEchoListener(this);
                 echoclient.start();
             } catch (IOException ex) {
@@ -307,8 +318,8 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabelfejlbesked;
     private javax.swing.JList jList2;
     private javax.swing.JList jListOnline;
     private javax.swing.JScrollPane jScrollPane1;
@@ -316,32 +327,28 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
     private javax.swing.JTextField jTextFieldIP2;
     private javax.swing.JTextField jTextFieldPort;
     private javax.swing.JTextField jTextFieldSendText;
-    private javax.swing.JTextField jTextFieldSendTo;
     private javax.swing.JTextField jTextFieldUser;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void messageArrived(String data) {
         //System.out.println("besked modtaget");
-        if(data.startsWith("ONLINE#")){
+        if (data.startsWith("ONLINE#")) {
             online = new DefaultListModel();
-            
+
             data = data.substring(7);
             String[] onlineUserNames = data.split(",");
             for (int i = 0; i < onlineUserNames.length; i++) {
-              online.addElement(onlineUserNames[i]);
+                online.addElement(onlineUserNames[i]);
             }
             jListOnline.setModel(online);
-        }
-        else if(data.startsWith("MESSAGE#"))
-        {
+        } else if (data.startsWith("MESSAGE#")) {
             String[] newMsg = data.split("#");
-            
-            msg.add(newMsg[1]+": "+newMsg[2]);
-            beskeder.addElement(newMsg[1]+": "+newMsg[2]);
+
+            msg.add(newMsg[1] + ": " + newMsg[2]);
+            beskeder.addElement(newMsg[1] + ": " + newMsg[2]);
             jList2.setModel(beskeder);
-        } 
-        
-        
+        }
+
     }
 }

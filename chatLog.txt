@@ -1,14 +1,2 @@
-feb 19, 2015 10:43:19 AM echoserver.EchoServer runServer
+feb 20, 2015 11:07:06 AM echoserver.EchoServer runServer
 INFO: Sever started. Listening on: 9090, bound to: localhost
-feb 19, 2015 10:43:31 AM echoserver.EchoServer runServer
-INFO: Connected to a client
-feb 19, 2015 10:43:34 AM echoserver.HandleClient run
-INFO: Received the message: CONNECT#MOR 
-feb 19, 2015 10:43:34 AM echoserver.HandleClient run
-INFO: Received the message: CONNECT#MOR 
-feb 19, 2015 10:44:03 AM echoserver.EchoServer runServer
-INFO: Connected to a client
-feb 19, 2015 10:44:08 AM echoserver.HandleClient run
-INFO: Received the message: CONNECT#FAR 
-feb 19, 2015 10:44:08 AM echoserver.HandleClient run
-INFO: Received the message: CONNECT#FAR 
