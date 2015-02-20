@@ -105,11 +105,6 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
             }
         });
 
-        jListOnline.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jListOnline);
 
         jScrollPane2.setViewportView(jList2);
@@ -261,12 +256,12 @@ public class Gui extends javax.swing.JFrame implements EchoListener {
                 Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        jTextFieldSendText.setText("Du har nu connect");
+        //jTextFieldSendText.setText("Du har nu connect");
     }//GEN-LAST:event_jButtonConnectActionPerformed
 
     private void jButtonDisconnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisconnectActionPerformed
         echoclient.send(ProtocolStrings.STOP);
-        jTextFieldSendText.setText("Du har nu disconnect");
+        //jTextFieldSendText.setText("Du har nu disconnect");
     }//GEN-LAST:event_jButtonDisconnectActionPerformed
 
     /**
